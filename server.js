@@ -1,9 +1,12 @@
 const express = require('express');
 const connectDB = require('./config/db');
-
+require('dotenv').config();
 const app = express();
 
 connectDB();
+
+//init middleware
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('API RUNNING'));
 const PORT = process.env.PORT || 5000;
